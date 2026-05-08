@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * This file is part of the pohoda-zabbix package
  *
- * https://github.com/VitexSoftware/pohoda-zabbix
+ * https://github.com/VitexSoftware/PohodaZabbix
  *
  * (c) Vítězslav Dvořák <info@vitexsoftware.cz>
  *
