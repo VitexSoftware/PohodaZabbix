@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_install:
+	mkdir -p debian/pohoda-zabbix/usr/share/pohoda-zabbix/bin
+	mkdir -p debian/pohoda-zabbix/usr/share/pohoda-zabbix/src/PohodaZabbix
+	mkdir -p debian/pohoda-zabbix/etc/zabbix/zabbix_agent2.d
+	cp -r src/PohodaZabbix/. debian/pohoda-zabbix/usr/share/pohoda-zabbix/src/PohodaZabbix/
+	install -m 755 bin/pohoda-zabbix-digest debian/pohoda-zabbix/usr/share/pohoda-zabbix/bin/
+	install -m 755 bin/pohoda-zabbix-status debian/pohoda-zabbix/usr/share/pohoda-zabbix/bin/
+	install -m 644 zabbix/pohoda-digest.conf debian/pohoda-zabbix/etc/zabbix/zabbix_agent2.d/
+	mkdir -p debian/pohoda-zabbix/usr/bin
+	ln -s ../share/pohoda-zabbix/bin/pohoda-zabbix-digest debian/pohoda-zabbix/usr/bin/pohoda-zabbix-digest
+	ln -s ../share/pohoda-zabbix/bin/pohoda-zabbix-status debian/pohoda-zabbix/usr/bin/pohoda-zabbix-status
+	mkdir -p debian/pohoda-zabbix/usr/share/icons/hicolor/scalable/apps
+	install -m 644 pohoda-zabbix.svg debian/pohoda-zabbix/usr/share/icons/hicolor/scalable/apps/pohoda-zabbix.svg
+	mkdir -p debian/pohoda-zabbix/usr/share/metainfo
+	install -m 644 com.vitexsoftware.pohoda-zabbix.metainfo.xml debian/pohoda-zabbix/usr/share/metainfo/

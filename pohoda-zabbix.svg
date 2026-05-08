@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   sodipodi:docname="pohoda-zabbix.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   width="512.0px"
+   height="512.0px"
+   viewBox="0 0 512.0 512.0"
+   version="1.1"
+   id="SVGRoot"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs3995" />
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="1120"
+     inkscape:window-width="1920"
+     showgrid="true"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="550.71429"
+     inkscape:cx="488.57143"
+     inkscape:zoom="0.7"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4565"
+       originx="0"
+       originy="0"
+       spacingy="1"
+       spacingx="1"
+       units="px" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3998">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Vrstva 1">
+    <g
+       id="g3038"
+       transform="matrix(7.3142855,0,0,7.3141813,1.1487061e-5,-4659.1335)">
+      <path
+         fill="#b2b2b2"
+         d="m 48.138,704.971 v -3.212 c 0,-4.757 3.885,-8.827 8.521,-9.23 H 21.237 c -0.683,0 -1.237,0.388 -1.237,1.071 v 12.304 c 0,0.685 0.554,1.097 1.237,1.097 h 27.497 c -0.28,-0.401 -0.596,-1.264 -0.596,-2.03 z"
+         id="path2988" />
+      <path
+         fill="#595959"
+         d="m 70,672.444 c 0,0.686 -0.555,1.237 -1.238,1.237 H 21.237 c -0.683,0 -1.237,-0.552 -1.237,-1.237 v -12.303 c 0,-0.686 0.554,-1.239 1.237,-1.239 h 47.525 c 0.683,0 1.238,0.554 1.238,1.239 z"
+         id="path2990" />
+      <circle
+         fill="#f79903"
+         cx="62.91"
+         cy="666.29303"
+         r="2.404"
+         id="circle2992" />
+      <g
+         id="g3004">
+        <polygon
+           fill-rule="evenodd"
+           clip-rule="evenodd"
+           fill="#ffffff"
+           points="37.351,669.182 35.06,669.182 37.943,663.401 40.235,663.401 "
+           id="polygon2994" />
+        <g
+           id="g3002">
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#ffffff"
+             points="28.938,669.182 26.644,669.182 29.527,663.401 31.82,663.401 "
+             id="polygon2996" />
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#ffffff"
+             points="33.144,669.182 30.852,669.182 33.736,663.401 36.029,663.401 "
+             id="polygon2998" />
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#ffffff"
+             points="41.579,669.182 39.285,669.182 42.171,663.401 44.464,663.401 "
+             id="polygon3000" />
+        </g>
+      </g>
+      <path
+         fill="#b2b2b2"
+         d="m 70,689.291 c 0,0.685 -0.555,1.237 -1.238,1.237 H 21.237 c -0.683,0 -1.237,-0.553 -1.237,-1.237 v -12.304 c 0,-0.684 0.554,-1.237 1.237,-1.237 h 47.525 c 0.683,0 1.238,0.554 1.238,1.237 z"
+         id="path3006" />
+      <path
+         fill="#f79903"
+         d="m 65.313,683.141 c 0,1.326 -1.077,2.403 -2.404,2.403 -1.329,0 -2.404,-1.077 -2.404,-2.403 0,-1.331 1.075,-2.406 2.404,-2.406 1.327,-10e-4 2.404,1.075 2.404,2.406 z"
+         id="path3008" />
+      <g
+         id="g3020">
+        <polygon
+           fill-rule="evenodd"
+           clip-rule="evenodd"
+           fill="#595959"
+           points="37.351,686.029 35.06,686.029 37.943,680.249 40.235,680.249 "
+           id="polygon3010" />
+        <g
+           id="g3018">
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#595959"
+             points="28.938,686.029 26.644,686.029 29.527,680.249 31.82,680.249 "
+             id="polygon3012" />
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#595959"
+             points="33.144,686.029 30.852,686.029 33.736,680.249 36.029,680.249 "
+             id="polygon3014" />
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#595959"
+             points="41.579,686.029 39.285,686.029 42.171,680.249 44.464,680.249 "
+             id="polygon3016" />
+        </g>
+      </g>
+      <g
+         id="g3032">
+        <polygon
+           fill-rule="evenodd"
+           clip-rule="evenodd"
+           fill="#595959"
+           points="37.351,702.64 35.06,702.64 37.943,696.86 40.235,696.86 "
+           id="polygon3022" />
+        <g
+           id="g3030">
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#595959"
+             points="28.938,702.64 26.644,702.64 29.527,696.86 31.82,696.86 "
+             id="polygon3024" />
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#595959"
+             points="33.144,702.64 30.852,702.64 33.736,696.86 36.029,696.86 "
+             id="polygon3026" />
+          <polygon
+             fill-rule="evenodd"
+             clip-rule="evenodd"
+             fill="#595959"
+             points="41.579,702.64 39.285,702.64 42.171,696.86 44.464,696.86 "
+             id="polygon3028" />
+        </g>
+      </g>
+      <g
+         id="g3036">
+        <path
+           fill="#f79903"
+           d="m 68.036,706.811 c -1.012,0 -1.839,-0.825 -1.839,-1.84 v -3.212 c 0,-0.855 -0.695,-1.544 -1.552,-1.544 -0.848,0 -1.532,0.688 -1.532,1.544 v 3.212 c 0,1.015 -0.835,1.84 -1.853,1.84 -1.044,0 -1.871,-0.825 -1.871,-1.84 v -3.212 c 0,-0.855 -0.7,-1.544 -1.548,-1.544 -0.849,0 -1.543,0.688 -1.543,1.544 v 3.212 c 0,1.015 -0.832,1.84 -1.847,1.84 -1.015,0 -1.841,-0.825 -1.841,-1.84 v -3.212 c 0,-2.886 2.343,-5.24 5.232,-5.24 1.181,0 2.306,0.398 3.242,1.131 l 0.168,0.139 0.167,-0.139 c 0.931,-0.732 2.049,-1.131 3.227,-1.131 2.898,0 5.246,2.354 5.246,5.24 v 3.212 c -0.002,1.014 -0.835,1.84 -1.856,1.84 z"
+           id="path3034" />
+      </g>
+    </g>
+    <ellipse
+       fill="#f79903"
+       cx="146.28572"
+       cy="146.28363"
+       id="circle3040"
+       style="stroke-width:7.31424"
+       rx="146.28572"
+       ry="146.28363" />
+    <g
+       id="g2"
+       transform="matrix(0.69523463,0,0,0.69523463,7.521694,107.91802)">
+      <path
+         d="M 0,0 H 400.83 V 104.99 H 0 Z m 0,0"
+         fill="#d40000"
+         id="path1" />
+      <path
+         d="M 17.14,16 H 75.1 v 7.53 L 28.45,80.68 h 47.79 v 8.31 H 16 V 81.46 L 62.65,24.31 H 17.14 Z m 98.3,9.73 -13.54,36.33 h 27.13 z M 109.8,16 h 11.32 l 28.12,72.99 H 138.86 L 132.15,70.27 H 98.88 L 92.16,88.99 H 81.63 Z m 60.14,38.13 v 26.74 h 16.01 c 5.37,0 9.35,-1.1 11.94,-3.3 2.59,-2.2 3.88,-5.57 3.88,-10.09 0,-4.56 -1.29,-7.93 -3.88,-10.1 -2.59,-2.16 -6.57,-3.25 -11.94,-3.25 z m 0,-30.02 v 22 h 14.78 c 4.88,0 8.51,-0.91 10.9,-2.71 2.39,-1.81 3.58,-4.57 3.58,-8.28 0,-3.68 -1.2,-6.44 -3.58,-8.26 -2.39,-1.82 -6.02,-2.74 -10.9,-2.74 H 169.94 Z M 159.96,16 h 25.5 c 7.61,0 13.48,1.56 17.59,4.69 4.12,3.13 6.17,7.58 6.17,13.35 0,4.46 -1.05,8.02 -3.16,10.66 -2.11,2.64 -5.21,4.29 -9.29,4.94 4.91,1.04 8.72,3.21 11.44,6.52 2.72,3.31 4.08,7.44 4.08,12.39 0,6.52 -2.24,11.55 -6.72,15.11 -4.48,3.55 -10.86,5.33 -19.12,5.33 h -26.49 z m 78.32,38.13 v 26.74 h 16.02 c 5.37,0 9.35,-1.1 11.93,-3.3 2.59,-2.2 3.88,-5.57 3.88,-10.09 0,-4.56 -1.29,-7.93 -3.88,-10.1 -2.59,-2.16 -6.57,-3.25 -11.93,-3.25 z m 0,-30.02 v 22 h 14.78 c 4.88,0 8.51,-0.91 10.9,-2.71 2.39,-1.81 3.58,-4.57 3.58,-8.28 0,-3.68 -1.19,-6.44 -3.58,-8.26 -2.39,-1.82 -6.02,-2.74 -10.9,-2.74 H 238.28 Z M 228.3,16 h 25.5 c 7.61,0 13.48,1.56 17.59,4.69 4.12,3.13 6.18,7.58 6.18,13.35 0,4.46 -1.05,8.02 -3.16,10.66 -2.11,2.64 -5.21,4.29 -9.29,4.94 4.91,1.04 8.72,3.21 11.44,6.52 2.72,3.31 4.08,7.44 4.08,12.39 0,6.52 -2.24,11.55 -6.72,15.11 -4.48,3.55 -10.86,5.33 -19.12,5.33 h -26.5 z m 97.24,0 h 10.98 L 353.87,42.21 371.39,16 H 382 l -22.84,34.19 25.68,38.8 H 373.86 L 353.65,58.45 333.24,88.99 h -10.61 l 25.74,-38.52 z m -28.91,0 h 9.98 v 72.99 h -9.98 z m 0,0"
+         fill="#ffffff"
+         id="path2" />
+    </g>
+  </g>
+</svg>
