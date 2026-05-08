@@ -1,0 +1,36 @@
+{
+    "name": "vitexsoftware/pohoda-zabbix",
+    "description": "Monitor Your Pohoda accounting using Zabbix — business metrics from digest modules.",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Vítězslav Dvořák",
+            "email": "info@vitexsoftware.cz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.1",
+        "vitexsoftware/digest-modules": "dev-main",
+        "vitexsoftware/pohoda-connector": "*",
+        "vitexsoftware/ease-core": "^1.49"
+    },
+    "repositories": [
+        {"type": "path", "url": "../php-vitexsoftware-digest-modules"}
+    ],
+    "autoload": {
+        "psr-4": {
+            "VitexSoftware\\PohodaZabbix\\": "src/PohodaZabbix/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\VitexSoftware\\PohodaZabbix\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10",
+        "phpstan/phpstan": "*"
+    }
+}

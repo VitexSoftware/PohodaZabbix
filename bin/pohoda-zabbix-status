@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Pohoda Zabbix Status — check Pohoda mServer connectivity.
+ *
+ * Outputs 1 if connected, 0 if not. Exit code 0 = ok, 1 = fail.
+ *
+ * Usage:
+ *   pohoda-zabbix-status
+ *   pohoda-zabbix-status --env=/path/to/.env
+ */
+
+namespace VitexSoftware\PohodaZabbix;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+DigestFeeder::handleStatusCommandLine();

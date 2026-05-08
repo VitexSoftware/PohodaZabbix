@@ -1,0 +1,12 @@
+/vendor/
+composer.lock
+.phpunit.result.cache
+*.deb
+*.build
+*.buildinfo
+*.changes
+*.dsc
+*.tar.*
+debian/pohoda-zabbix/
+debian/.debhelper/
+debian/tmp/

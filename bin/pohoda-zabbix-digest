@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Pohoda Zabbix Digest — business metrics from digest modules.
+ *
+ * Usage:
+ *   pohoda-zabbix-digest                          # all metrics as JSON
+ *   pohoda-zabbix-digest debtors.count            # single metric value
+ *   pohoda-zabbix-digest --metric=debtors.count   # same, explicit flag
+ *   pohoda-zabbix-digest --debug                  # pretty-print JSON
+ *   pohoda-zabbix-digest --env=/path/to/.env      # custom env file
+ */
+
+namespace VitexSoftware\PohodaZabbix;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+DigestFeeder::handleCommandLine();
