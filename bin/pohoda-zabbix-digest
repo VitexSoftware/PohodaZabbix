@@ -7,7 +7,9 @@ declare(strict_types=1);
  * Pohoda Zabbix Digest — business metrics from digest modules.
  *
  * Usage:
- *   pohoda-zabbix-digest                          # all metrics as JSON
+ *   pohoda-zabbix-digest                          # all metrics, last month (default)
+ *   pohoda-zabbix-digest --period=year            # all metrics, current calendar year
+ *   pohoda-zabbix-digest --period=2024            # all metrics, full year 2024
  *   pohoda-zabbix-digest debtors.count            # single metric value
  *   pohoda-zabbix-digest --metric=debtors.count   # same, explicit flag
  *   pohoda-zabbix-digest --debug                  # pretty-print JSON

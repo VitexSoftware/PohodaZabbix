@@ -16,9 +16,6 @@
         "vitexsoftware/pohoda-connector": "*",
         "vitexsoftware/ease-core": "^1.49"
     },
-    "repositories": [
-        {"type": "path", "url": "../php-vitexsoftware-digest-modules"}
-    ],
     "autoload": {
         "psr-4": {
             "VitexSoftware\\PohodaZabbix\\": "src/PohodaZabbix/"

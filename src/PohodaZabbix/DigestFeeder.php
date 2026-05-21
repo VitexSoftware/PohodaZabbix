@@ -18,7 +18,7 @@ namespace VitexSoftware\PohodaZabbix;
 use VitexSoftware\DigestModules\Core\ModuleRunner;
 use VitexSoftware\DigestModules\Core\ZabbixOutputInterface;
 use VitexSoftware\DigestModules\Modules;
-use VitexSoftware\PohodaDigest\DataProvider\PohodaDataProvider;
+use VitexSoftware\PohodaZabbix\DataProvider\PohodaDataProvider;
 
 /**
  * Business metrics feeder for Zabbix from Pohoda via digest modules.
@@ -52,7 +52,6 @@ class DigestFeeder
     ];
 
     private string $cacheDir;
-    private string $cacheFile;
 
     public function __construct(?string $cacheDir = null)
     {
@@ -66,8 +65,6 @@ class DigestFeeder
             $this->cacheDir = sys_get_temp_dir() . '/pohoda-zabbix-cache-' . posix_getuid();
         }
 
-        $this->cacheFile = $this->cacheDir . '/digest_cache.json';
-
         if (!is_dir($this->cacheDir)) {
             @mkdir($this->cacheDir, 0o755, true);
         }
@@ -78,9 +75,9 @@ class DigestFeeder
      *
      * @param string $metric Full or short metric key (e.g. 'debtors.count')
      */
-    public function getMetric(string $metric): string
+    public function getMetric(string $metric, ?\DatePeriod $period = null): string
     {
-        $allMetrics = $this->getAllMetrics();
+        $allMetrics = $this->getAllMetrics($period);
 
         if (isset($allMetrics[$metric])) {
             return (string) $allMetrics[$metric];
@@ -100,15 +97,16 @@ class DigestFeeder
      *
      * @return array<string, int|float|string>
      */
-    public function getAllMetrics(): array
+    public function getAllMetrics(?\DatePeriod $period = null): array
     {
-        $cached = $this->getCachedMetrics();
+        $period ??= self::defaultPeriod();
+        $cached = $this->getCachedMetrics($period);
 
         if ($cached !== null) {
             return $cached;
         }
 
-        return $this->collectAndCacheMetrics();
+        return $this->collectAndCacheMetrics($period);
     }
 
     /**
@@ -122,9 +120,43 @@ class DigestFeeder
             $provider = new PohodaDataProvider();
 
             return $provider->testConnection();
-        } catch (\Throwable $e) {
+        } catch (\Throwable) {
             return false;
         }
+    }
+
+    /**
+     * Parse a period string into a DatePeriod.
+     *
+     * Accepted values:
+     *   month   — last 30 days up to today (default)
+     *   year    — Jan 1 of current year up to today
+     *   YYYY    — full calendar year (e.g. 2024)
+     */
+    public static function parsePeriod(string $spec): \DatePeriod
+    {
+        $spec = strtolower(trim($spec));
+
+        if ($spec === 'month' || $spec === '') {
+            return self::defaultPeriod();
+        }
+
+        if ($spec === 'year') {
+            $start = new \DateTime('first day of January this year 00:00:00');
+            $end = new \DateTime('today 23:59:59');
+
+            return new \DatePeriod($start, new \DateInterval('P1D'), $end);
+        }
+
+        // Specific four-digit year, e.g. "2024"
+        if (preg_match('/^\d{4}$/', $spec)) {
+            $start = new \DateTime("{$spec}-01-01 00:00:00");
+            $end = new \DateTime("{$spec}-12-31 23:59:59");
+
+            return new \DatePeriod($start, new \DateInterval('P1D'), $end);
+        }
+
+        throw new \InvalidArgumentException("Unknown period spec '{$spec}'. Use: month, year, or YYYY.");
     }
 
     /**
@@ -132,13 +164,14 @@ class DigestFeeder
      */
     public static function handleCommandLine(): void
     {
-        $options = getopt('m::e::d::c::', ['metric::', 'env::', 'debug::', 'color::']);
+        $options = getopt('m::e::d::p::c::', ['metric::', 'env::', 'debug::', 'period::', 'color::']);
 
         $envfile = $options['env'] ?? '../.env';
         \Ease\Shared::init(['POHODA_URL', 'POHODA_USERNAME', 'POHODA_PASSWORD', 'POHODA_ICO'], $envfile);
 
         $debugMode = isset($options['debug']) || isset($options['d']);
         $requestedMetric = $options['metric'] ?? '';
+        $periodSpec = $options['period'] ?? $options['p'] ?? 'month';
 
         // Find first positional argument as metric
         if (empty($requestedMetric)) {
@@ -151,7 +184,7 @@ class DigestFeeder
 
                 $prevArg = $argv[$index - 1] ?? '';
 
-                if (\in_array($prevArg, ['-m', '--metric', '-e', '--env'], true)) {
+                if (\in_array($prevArg, ['-m', '--metric', '-e', '--env', '-p', '--period'], true)) {
                     continue;
                 }
 
@@ -161,12 +194,19 @@ class DigestFeeder
             }
         }
 
+        try {
+            $period = self::parsePeriod((string) $periodSpec);
+        } catch (\InvalidArgumentException $e) {
+            fwrite(\STDERR, $e->getMessage() . "\n");
+            exit(1);
+        }
+
         $feeder = new self();
 
         if (!empty($requestedMetric)) {
-            echo $feeder->getMetric($requestedMetric) . "\n";
+            echo $feeder->getMetric($requestedMetric, $period) . "\n";
         } else {
-            $metrics = $feeder->getAllMetrics();
+            $metrics = $feeder->getAllMetrics($period);
             $jsonFlags = \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES;
 
             if ($debugMode) {
@@ -198,20 +238,39 @@ class DigestFeeder
         exit($connected ? 0 : 1);
     }
 
+    private static function defaultPeriod(): \DatePeriod
+    {
+        return new \DatePeriod(
+            new \DateTime('-1 month'),
+            new \DateInterval('P1D'),
+            new \DateTime(),
+        );
+    }
+
+    private function cacheFile(\DatePeriod $period): string
+    {
+        $start = $period->getStartDate()->format('Y-m-d');
+        $end = $period->getEndDate()->format('Y-m-d');
+
+        return $this->cacheDir . '/digest_cache_' . $start . '_' . $end . '.json';
+    }
+
     /**
      * @return array<string, int|float|string>|null
      */
-    private function getCachedMetrics(): ?array
+    private function getCachedMetrics(\DatePeriod $period): ?array
     {
-        if (!file_exists($this->cacheFile)) {
+        $file = $this->cacheFile($period);
+
+        if (!file_exists($file)) {
             return null;
         }
 
-        if ((time() - filemtime($this->cacheFile)) > self::CACHE_TTL) {
+        if ((time() - filemtime($file)) > self::CACHE_TTL) {
             return null;
         }
 
-        $content = file_get_contents($this->cacheFile);
+        $content = file_get_contents($file);
 
         if ($content === false) {
             return null;
@@ -225,7 +284,7 @@ class DigestFeeder
     /**
      * @return array<string, int|float|string>
      */
-    private function collectAndCacheMetrics(): array
+    private function collectAndCacheMetrics(\DatePeriod $period): array
     {
         $dataProvider = new PohodaDataProvider();
         $moduleRunner = new ModuleRunner($dataProvider);
@@ -234,15 +293,11 @@ class DigestFeeder
             $moduleRunner->addModule($key, $class);
         }
 
-        $start = new \DateTime('-1 month');
-        $end = new \DateTime();
-        $period = new \DatePeriod($start, new \DateInterval('P1D'), $end);
-
         $digestData = $moduleRunner->run($period);
         $metrics = $this->extractZabbixMetrics($digestData);
 
         $json = json_encode($metrics, \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES);
-        @file_put_contents($this->cacheFile, $json, \LOCK_EX);
+        @file_put_contents($this->cacheFile($period), $json, \LOCK_EX);
 
         return $metrics;
     }

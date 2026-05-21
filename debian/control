@@ -1,0 +1,31 @@
+Source: pohoda-zabbix
+Section: net
+Priority: optional
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Build-Depends: debhelper-compat (= 13), jq
+Standards-Version: 4.6.2
+Homepage: https://github.com/VitexSoftware/pohoda-zabbix
+Rules-Requires-Root: no
+
+Package: pohoda-zabbix
+Architecture: all
+Depends: ${misc:Depends}, php-cli (>= 8.1), php-vitexsoftware-digest-modules,
+ php-vitexsoftware-pohoda-connector, zabbix-agent2 | zabbix-agent
+Recommends: zabbix-agent2
+Description: Zabbix monitoring for Pohoda accounting
+ Business metrics monitoring for Pohoda accounting system using Zabbix.
+ Collects data via shared digest modules through the Pohoda mServer API.
+ .
+ Monitored metrics include:
+  - Debtors: company count, invoice count, overdue-age buckets (0-30, 31-60,
+    61-90, 90+ days)
+  - Outcoming and incoming invoice counts (total, active, cancelled)
+  - Incoming and outgoing payment counts
+  - Waiting income and waiting payments (count + total amount)
+  - Unmatched bank payments (count + total amount)
+  - Pohoda mServer connectivity status
+ .
+ The --period option selects the analysis window: month (default, last 30
+ days), year (current calendar year), or a specific four-digit year.
+ Results are cached per period for 5 minutes to reduce mServer load.
+ Compatible with Zabbix Agent 2 (recommended) and Zabbix Agent.

@@ -1,0 +1,121 @@
+.TH POHODA-ZABBIX-DIGEST 1 "May 2026" "pohoda-zabbix 0.2.0" "User Commands"
+.SH NAME
+pohoda-zabbix-digest \- Pohoda business metrics for Zabbix monitoring
+.SH SYNOPSIS
+.B pohoda-zabbix-digest
+[\fIMETRIC\fR]
+[\fB\-\-metric\fR=\fIMETRIC\fR]
+[\fB\-\-period\fR=\fIPERIOD\fR]
+[\fB\-\-env\fR=\fIFILE\fR]
+[\fB\-\-debug\fR]
+.SH DESCRIPTION
+Collects business metrics from Pohoda accounting system via mServer
+using shared digest modules. Results are cached per period for 5 minutes.
+.PP
+When called without arguments, outputs all metrics as JSON for the default
+period (last 30 days).
+When a metric name is provided, outputs only that metric's value.
+.SH OPTIONS
+.TP
+.B \-\-metric=\fIMETRIC\fR, \fIMETRIC\fR
+Return a single metric value instead of full JSON.
+.TP
+.B \-\-period=\fIPERIOD\fR
+Time period to analyse. Accepted values:
+.RS
+.TP
+.B month
+Last 30 days (default).
+.TP
+.B year
+Current calendar year from January 1st to today.
+.TP
+.B YYYY
+Full calendar year, e.g.\& \fB2024\fR.
+.RE
+.TP
+.B \-\-env=\fIFILE\fR
+Path to .env configuration file.
+.TP
+.B \-\-debug
+Pretty-print JSON output.
+.SH AVAILABLE METRICS
+.SS Debtors
+.TP
+.B debtors.count
+Number of companies with overdue unpaid invoices.
+.TP
+.B debtors.invoices_count
+Total count of overdue unpaid invoices.
+.TP
+.B debtors.overdue_0_30
+Overdue invoices aged 0\(en30 days.
+.TP
+.B debtors.overdue_31_60
+Overdue invoices aged 31\(en60 days.
+.TP
+.B debtors.overdue_61_90
+Overdue invoices aged 61\(en90 days.
+.TP
+.B debtors.overdue_90plus
+Overdue invoices aged more than 90 days.
+.SS Outcoming invoices (issued)
+.TP
+.B outcoming_invoices.count
+Total issued invoices in period.
+.TP
+.B outcoming_invoices.active_count
+Non-cancelled issued invoices.
+.TP
+.B outcoming_invoices.cancelled_count
+Cancelled issued invoices.
+.SS Incoming invoices (received)
+.TP
+.B incoming_invoices.count, incoming_invoices.active_count, incoming_invoices.cancelled_count
+Counts of received invoices (total / active / cancelled).
+.SS Payments
+.TP
+.B incoming_payments.count
+Incoming bank payments in period.
+.TP
+.B outcoming_payments.count
+Outgoing bank payments in period.
+.SS Waiting & unmatched
+.TP
+.B waiting_income.count, waiting_income.total_amount
+Unpaid outcoming invoices (count and total amount).
+.TP
+.B waiting_payments.count, waiting_payments.total_amount
+Unpaid incoming invoices (count and total amount).
+.TP
+.B unmatched_payments.count, unmatched_payments.total_amount
+Bank payments not yet matched to an invoice.
+.SS Meta
+.TP
+.B last_run
+Unix timestamp of last data collection.
+.SH ENVIRONMENT
+.TP
+.B POHODA_URL
+Pohoda mServer URL (e.g.\& http://localhost:5336).
+.TP
+.B POHODA_USERNAME
+mServer username.
+.TP
+.B POHODA_PASSWORD
+mServer password.
+.TP
+.B POHODA_ICO
+Company identification number (IČO).
+.SH EXAMPLES
+.TP
+pohoda-zabbix-digest --period=year --debug
+Pretty-print all metrics for the current calendar year.
+.TP
+pohoda-zabbix-digest --period=2024 debtors.count
+Return the debtor count for the full year 2024.
+.SH SEE ALSO
+.BR pohoda-zabbix-status (1),
+.BR zabbix_agent2 (8)
+.SH AUTHOR
+Vítězslav Dvořák <info@vitexsoftware.cz>

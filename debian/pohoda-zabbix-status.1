@@ -1,0 +1,35 @@
+.TH POHODA-ZABBIX-STATUS 1 "May 2026" "pohoda-zabbix" "User Commands"
+.SH NAME
+pohoda-zabbix-status \- check Pohoda mServer connectivity for Zabbix
+.SH SYNOPSIS
+.B pohoda-zabbix-status
+[\fB\-\-env\fR=\fIFILE\fR]
+.SH DESCRIPTION
+Tests connectivity to the Pohoda mServer API. Outputs 1 if connected,
+0 if not reachable. Exit code 0 on success, 1 on failure.
+.PP
+Designed as a Zabbix UserParameter for the
+.B pohoda.server.connectivity
+item.
+.SH OPTIONS
+.TP
+.B \-\-env=\fIFILE\fR
+Path to .env configuration file.
+.SH ENVIRONMENT
+.TP
+.B POHODA_URL
+Pohoda mServer URL.
+.TP
+.B POHODA_USERNAME
+mServer username.
+.TP
+.B POHODA_PASSWORD
+mServer password.
+.TP
+.B POHODA_ICO
+Company identification number.
+.SH SEE ALSO
+.BR pohoda-zabbix-digest (1),
+.BR zabbix_agent2 (8)
+.SH AUTHOR
+Vítězslav Dvořák <info@vitexsoftware.cz>

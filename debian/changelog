@@ -1,0 +1,18 @@
+pohoda-zabbix (0.2.0) trixie; urgency=low
+
+  * Add --period option to pohoda-zabbix-digest (month, year, YYYY)
+  * Add PohodaDataProvider with dateTill fix and isOnline connectivity check
+  * Switch all dependencies to Packagist (no local path repositories)
+  * Per-period cache files (digest_cache_YYYY-MM-DD_YYYY-MM-DD.json)
+  * Fix debtors and outcoming_invoices Zabbix metrics (upstream digest-modules)
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Thu, 22 May 2026 00:00:00 +0000
+
+pohoda-zabbix (0.1.0) trixie; urgency=low
+
+  * Initial release
+  * DigestFeeder for business metrics from Pohoda via digest-modules
+  * Zabbix UserParameter configuration for pohoda.digest.* metrics
+  * pohoda-zabbix-digest and pohoda-zabbix-status CLI tools
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Thu, 08 May 2026 00:00:00 +0000
